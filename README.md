@@ -1,4 +1,4 @@
-# API Test Automation Framework
+# DOG API Test Automation Framework
 
 ## 📌 Overview
 
@@ -20,6 +20,7 @@ A abordagem adotada prioriza:
 * Rest Assured
 * JUnit 5
 * Hamcrest
+* Allura Reports
 
 ---
 
