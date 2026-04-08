@@ -2,9 +2,11 @@ package specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.ResponseSpecification;
+import utils.ConfigManager;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.lessThan;
 
 public final class ResponseSpecs {
 
@@ -15,6 +17,7 @@ public final class ResponseSpecs {
         return new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .expectHeader("Content-Type", containsString("application/json"))
+                .expectResponseTime(lessThan(ConfigManager.getResponseTimeThresholdMillis()))
                 .expectBody("status", equalTo("success"))
                 .build();
     }

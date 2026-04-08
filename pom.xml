@@ -18,6 +18,7 @@
         <allure.version>2.29.1</allure.version>
         <allure.report.version>2.30.0</allure.report.version>
         <jackson.version>2.18.3</jackson.version>
+        <test.tags></test.tags>
     </properties>
 
     <dependencies>
@@ -81,6 +82,7 @@
                 <version>3.5.2</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <groups>${test.tags}</groups>
                     <systemPropertyVariables>
                         <env>${env}</env>
                     </systemPropertyVariables>
@@ -96,4 +98,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>smoke</id>
+            <properties>
+                <test.tags>smoke</test.tags>
+            </properties>
+        </profile>
+        <profile>
+            <id>regression</id>
+            <properties>
+                <test.tags>regression</test.tags>
+            </properties>
+        </profile>
+    </profiles>
 </project>

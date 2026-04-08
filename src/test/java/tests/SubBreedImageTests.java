@@ -2,6 +2,7 @@ package tests;
 
 import models.ImageListResponse;
 import models.RandomImageResponse;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import specs.ResponseSpecs;
@@ -16,6 +17,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.not;
 
+@Tag("regression")
 class SubBreedImageTests extends ApiTestSupport {
 
     @ParameterizedTest(name = "Deve retornar imagem aleatória da sub-raça {1} de {0}")

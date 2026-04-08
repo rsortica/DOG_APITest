@@ -19,7 +19,7 @@ src/test/java
 |-- clients      -> camada de acesso à API
 |-- models       -> mapeamento das respostas
 |-- specs        -> request/response specs reutilizáveis
-|-- tests        -> cenários de teste
+|-- tests        -> cenários de teste por domínio
 `-- utils        -> configuração e helpers
 
 src/test/resources
@@ -39,6 +39,24 @@ mvn test -Denv=prod
 ```
 
 Atualmente todos apontam para `https://dog.ceo`, mas a estrutura já está preparada para separar URLs e demais configurações.
+
+## Perfis de Execução
+
+- suíte completa: `mvn clean test`
+- smoke: `mvn clean test -Psmoke`
+- regression: `mvn clean test -Pregression`
+
+Os testes `smoke` cobrem o fluxo principal. Os testes `regression` incluem toda a suíte, inclusive contratos negativos e cenários parametrizados.
+
+## Timeouts e Performance
+
+Os requests usam timeouts configuráveis por ambiente:
+
+- `timeout.connection.ms`
+- `timeout.socket.ms`
+- `timeout.response.ms`
+
+Além disso, as respostas de sucesso validam um tempo máximo configurável via `timeout.response.ms`.
 
 ## Testes Implementados
 
@@ -68,6 +86,8 @@ Atualmente todos apontam para `https://dog.ceo`, mas a estrutura já está prepa
 
 ```bash
 mvn clean test
+mvn clean test -Psmoke
+mvn clean test -Pregression
 ```
 
 ## Dados Externos e Schemas
@@ -86,8 +106,3 @@ O projeto inclui um workflow do GitHub Actions em `.github/workflows/api-tests.y
 - publica `target/allure-results` como artefato
 - publica `target/site/allure-maven-plugin` como artefato HTML
 - faz deploy do relatório no GitHub Pages quando houver push para `main`
-
-## Próximos Passos Sugeridos
-
-- Separar a suíte em classes por domínio
-- Expandir a cobertura negativa e de contratos para mais endpoints
