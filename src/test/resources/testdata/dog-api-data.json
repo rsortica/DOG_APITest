@@ -1,0 +1,13 @@
+{
+  "listAllBreeds": {
+    "expectedBreed": "hound"
+  },
+  "subBreeds": {
+    "breed": "hound",
+    "expectedSubBreed": "afghan"
+  },
+  "randomImage": {
+    "breed": "hound",
+    "expectedPathSegment": "/breeds/hound"
+  }
+}
