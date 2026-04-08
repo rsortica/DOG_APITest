@@ -1,6 +1,6 @@
 # DOG API Test Automation Framework
 
-Framework base para testes de API com Java, Maven e Rest Assured usando a API pública `https://dog.ceo/dog-api/documentation`.
+Framework base para testes de API com Java, Maven e Rest Assured usando a API publica `https://dog.ceo/dog-api/documentation`.
 
 ## Stack
 
@@ -23,7 +23,9 @@ src/test/java
 `-- utils        -> configuracao e helpers
 
 src/test/resources
-`-- config       -> propriedades por ambiente
+|-- config       -> propriedades por ambiente
+|-- schemas      -> contratos JSON das respostas
+`-- testdata     -> massas de teste externas
 ```
 
 ## Ambientes
@@ -40,8 +42,8 @@ Atualmente todos apontam para `https://dog.ceo`, mas a estrutura ja esta prepara
 
 ## Testes implementados
 
-- Listagem de todas as racas
-- Listagem de sub-racas de `hound`
+- Listagem de todas as racas com validacao de JSON Schema
+- Listagem de sub-racas com dados externos
 - Busca de imagem aleatoria por raca
 
 ## Executar
@@ -50,9 +52,21 @@ Atualmente todos apontam para `https://dog.ceo`, mas a estrutura ja esta prepara
 mvn clean test
 ```
 
+## Dados externos e schemas
+
+- Massas de teste: `src/test/resources/testdata/dog-api-data.json`
+- Schemas JSON: `src/test/resources/schemas`
+
+## CI/CD
+
+O projeto inclui um workflow do GitHub Actions em `.github/workflows/api-tests.yml` que:
+
+- executa `mvn -B clean test -Denv=dev`
+- publica `target/surefire-reports` como artefato
+- publica `allure-results` como artefato
+
 ## Proximos passos sugeridos
 
-- Adicionar JSON Schema validation
-- Externalizar dados de teste
 - Incluir execucao paralela
-- Integrar com pipeline CI/CD
+- Expandir a cobertura de endpoints
+- Publicar relatorios Allure
