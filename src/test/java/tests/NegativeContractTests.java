@@ -2,6 +2,7 @@ package tests;
 
 import models.ErrorResponse;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import specs.ResponseSpecs;
 
@@ -9,6 +10,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+@Tag("regression")
 class NegativeContractTests extends ApiTestSupport {
 
     @Test

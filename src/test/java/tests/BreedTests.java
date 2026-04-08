@@ -1,6 +1,7 @@
 package tests;
 
 import models.BreedListResponse;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import specs.ResponseSpecs;
@@ -10,6 +11,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasItem;
 
+@Tag("smoke")
+@Tag("regression")
 class BreedTests extends ApiTestSupport {
 
     @Test

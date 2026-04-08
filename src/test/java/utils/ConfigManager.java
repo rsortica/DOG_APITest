@@ -16,6 +16,18 @@ public final class ConfigManager {
         return getRequiredProperty("base.url");
     }
 
+    public static int getConnectionTimeoutMillis() {
+        return getIntProperty("timeout.connection.ms", 5000);
+    }
+
+    public static int getSocketTimeoutMillis() {
+        return getIntProperty("timeout.socket.ms", 10000);
+    }
+
+    public static long getResponseTimeThresholdMillis() {
+        return getLongProperty("timeout.response.ms", 15000L);
+    }
+
     private static Properties loadProperties() {
         String env = System.getProperty("env");
         if (env == null || env.isBlank()) {
@@ -42,5 +54,31 @@ public final class ConfigManager {
             throw new IllegalStateException("Propriedade obrigatoria nao configurada: " + key);
         }
         return value;
+    }
+
+    private static int getIntProperty(String key, int defaultValue) {
+        String value = PROPERTIES.getProperty(key);
+        if (value == null || value.isBlank()) {
+            return defaultValue;
+        }
+
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException exception) {
+            throw new IllegalStateException("Propriedade inteira invalida: " + key, exception);
+        }
+    }
+
+    private static long getLongProperty(String key, long defaultValue) {
+        String value = PROPERTIES.getProperty(key);
+        if (value == null || value.isBlank()) {
+            return defaultValue;
+        }
+
+        try {
+            return Long.parseLong(value);
+        } catch (NumberFormatException exception) {
+            throw new IllegalStateException("Propriedade numerica invalida: " + key, exception);
+        }
     }
 }

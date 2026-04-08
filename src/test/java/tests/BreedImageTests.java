@@ -3,6 +3,7 @@ package tests;
 import models.ImageListResponse;
 import models.RandomImageResponse;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -18,6 +19,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.not;
 
+@Tag("smoke")
+@Tag("regression")
 class BreedImageTests extends ApiTestSupport {
 
     @Test
