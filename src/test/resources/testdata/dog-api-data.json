@@ -2,6 +2,28 @@
   "listAllBreeds": {
     "expectedBreed": "hound"
   },
+  "positiveBreeds": [
+    {
+      "breed": "hound",
+      "expectedPathSegment": "/breeds/hound"
+    },
+    {
+      "breed": "husky",
+      "expectedPathSegment": "/breeds/husky"
+    }
+  ],
+  "positiveSubBreeds": [
+    {
+      "breed": "hound",
+      "subBreed": "afghan",
+      "expectedPathSegment": "/hound-afghan"
+    },
+    {
+      "breed": "bulldog",
+      "subBreed": "boston",
+      "expectedPathSegment": "/bulldog-boston"
+    }
+  ],
   "subBreeds": {
     "breed": "hound",
     "expectedSubBreed": "afghan"
@@ -9,5 +31,41 @@
   "randomImage": {
     "breed": "hound",
     "expectedPathSegment": "/breeds/hound"
+  },
+  "breedImages": {
+    "breed": "husky",
+    "expectedPathSegment": "/breeds/husky"
+  },
+  "randomSubBreedImage": {
+    "breed": "hound",
+    "subBreed": "afghan",
+    "expectedPathSegment": "/hound-afghan"
+  },
+  "subBreedImages": {
+    "breed": "hound",
+    "subBreed": "afghan",
+    "expectedPathSegment": "/hound-afghan"
+  },
+  "invalidBreedSubBreeds": {
+    "breed": "invalidbreed",
+    "expectedMessage": "Breed not found (main breed does not exist)"
+  },
+  "invalidBreedRandomImage": {
+    "breed": "invalidbreed",
+    "expectedMessage": "Breed not found (main breed does not exist)"
+  },
+  "invalidSubBreedRandomImage": {
+    "breed": "hound",
+    "subBreed": "invalidsubbreed",
+    "expectedMessage": "Breed not found (sub breed does not exist)"
+  },
+  "invalidBreedImageList": {
+    "breed": "invalidbreed",
+    "expectedMessage": "Breed not found (main breed does not exist)"
+  },
+  "invalidSubBreedImageList": {
+    "breed": "hound",
+    "subBreed": "invalidsubbreed",
+    "expectedMessage": "Breed not found (sub breed does not exist)"
   }
 }
