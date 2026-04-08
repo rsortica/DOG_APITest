@@ -2,7 +2,8 @@
 
 ## 📌 Overview
 
-Este projeto tem como objetivo implementar um framework de automação de testes de API utilizando **Java**, **Maven** e **Rest Assured**, seguindo padrões utilizados em ambientes corporativos.
+Este projeto tem como objetivo garantir a qualidade da integração com a Dog API __https://dog.ceo/dog-api/documentation__. A aplicação permitirá que os usuários visualizem imagens de diferentes raças de cães, bem como aprendam sobre as raças disponíveis.
+Pata isso será implementado um framework de automação de testes de API utilizando **Java**, **Maven** e **Rest Assured**, seguindo padrões utilizados em ambientes corporativos.
 
 A abordagem adotada prioriza:
 
@@ -147,7 +148,7 @@ Cada etapa adiciona:
 
 * Java instalado e configurado
 * Maven instalado
-* IDE (VsCode recomendado)
+* IDE
 
 ---
 
