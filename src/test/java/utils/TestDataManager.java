@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 public class TestDataManager {
@@ -17,6 +18,22 @@ public class TestDataManager {
     }
 
     public String getRequiredValue(String path) {
+        Object current = getRequiredObject(path);
+        return String.valueOf(current);
+    }
+
+    public List<Map<String, Object>> getRequiredList(String path) {
+        Object current = getRequiredObject(path);
+        if (!(current instanceof List)) {
+            throw new IllegalStateException("Lista obrigatoria nao encontrada: " + path);
+        }
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> values = (List<Map<String, Object>>) current;
+        return values;
+    }
+
+    private Object getRequiredObject(String path) {
         Object current = data;
         for (String key : path.split("\\.")) {
             if (!(current instanceof Map)) {
@@ -28,8 +45,7 @@ public class TestDataManager {
                 throw new IllegalStateException("Valor obrigatorio nao encontrado: " + path);
             }
         }
-
-        return String.valueOf(current);
+        return current;
     }
 
     private Map<String, Object> loadData(String resourcePath) {

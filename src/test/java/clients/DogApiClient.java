@@ -30,4 +30,27 @@ public class DogApiClient {
                 .when()
                 .get("/breed/{breed}/images/random");
     }
+
+    public Response listImagesByBreed(String breed) {
+        return requestSpecification
+                .pathParam("breed", breed)
+                .when()
+                .get("/breed/{breed}/images");
+    }
+
+    public Response getRandomImageBySubBreed(String breed, String subBreed) {
+        return requestSpecification
+                .pathParam("breed", breed)
+                .pathParam("subBreed", subBreed)
+                .when()
+                .get("/breed/{breed}/{subBreed}/images/random");
+    }
+
+    public Response listImagesBySubBreed(String breed, String subBreed) {
+        return requestSpecification
+                .pathParam("breed", breed)
+                .pathParam("subBreed", subBreed)
+                .when()
+                .get("/breed/{breed}/{subBreed}/images");
+    }
 }
